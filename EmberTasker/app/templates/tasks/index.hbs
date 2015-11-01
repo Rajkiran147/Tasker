@@ -1,0 +1,9 @@
+<ul id="task-list">
+		
+		{{#each model as |task|}}
+
+				{{task-item task=task updateTask="updateTask"  deleteTask="deleteTask" saveStat="saveStat"}}
+
+		{{/each}}
+
+</ul>

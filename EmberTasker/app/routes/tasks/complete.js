@@ -1,0 +1,19 @@
+import Ember from 'ember';
+
+export default Ember.Route.extend({  
+    model() {
+        return this.store.filter('task', function(task) {
+            return task.get('complete');
+        });
+    },
+/*model(){
+	
+	return this.modelFor('tasks').filterBy('complete',false);
+
+},*/
+    renderTemplate(controller, model) {
+        this.render('tasks.index', {
+            model: model
+        });
+    }
+});

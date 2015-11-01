@@ -1,0 +1,50 @@
+<nav class="task-details-nav">
+	<ul>
+		{{tab-list-item handleTab='handleTab' task=task tab-title="View Task Status" data-content="view-stats" class="tab-current" type='view_task' action='tabClicked' }}
+		{{tab-list-item handleTab='handleTab' task=task tab-title="Add Task Status" data-content="add-stats" type='add_task' }}
+	</ul>
+</nav>
+{{#if showView}}
+<div class="content-container current-content" id="view-stats">
+	<table>
+		<thead>
+			<tr>
+				<th>Date</th>
+				<th>Time Spent(hours)</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+				{{#each task.stats as |stat|}}
+				<tr>
+				<td>{{stat.readableDate}}</td>
+				<td>{{stat.timeSpent}}</td>
+				<td>{{stat.description}}</td>
+				</tr>
+				{{else}}
+				<tr>
+						<td colspan="3" class="no-records-message">No records found.Click Add Task Status to enter status</td>
+				</tr>
+				{{/each}}
+		</tbody>
+	</table>
+</div>
+{{else}}
+<div class="content-container clearfix" id="add-stats">
+	<ul>
+		<li>
+			{{input type="number" class="" value=time_spent placeholder="Enter time spent in hours"}}
+		</li>
+		<li>
+			{{input class="" value=description placeholder="description"}}
+		</li>
+		<li class="full-width">
+			<button {{action 'saveStat'}} class="">Add Status</button>
+		</li>
+	</ul>
+</div>
+
+{{/if}}
+
+
+

@@ -1,0 +1,80 @@
+<section id="main">
+
+	{{yield}}
+
+</section>
+
+<footer id="navigation">  
+   <div class="tabs tabs-style-underline">
+
+    <nav class="">
+
+        <ul>
+
+
+		{{#link-to "tasks.index" class="tab-all"  activeClass="tab-current" tagName="li"}}
+
+            All
+
+            		<span id="task-count">
+
+       					<strong>{{all}}</strong> 
+
+       				</span>
+
+    {{/link-to}}
+
+
+	{{#link-to "tasks.active" class="tab-active"  activeClass="tab-current" tagName="li"}}
+
+            Active
+
+            		<span id="task-count">
+
+       					<strong>{{remaining}}</strong> 
+
+       				</span>
+
+    {{/link-to}}
+
+    {{#link-to "tasks.complete" class="tab-completed"  activeClass="tab-current" tagName="li"}}
+
+            Completed
+
+            		 <span id="task-count">
+       				
+       				<strong>{{completed}}</strong> 
+
+       			</span>
+            	
+            	
+        			<button class="trash" title="Move all completed tasks to trash" {{action "clearCompleted"  bubbles=false}}>
+
+                    		{{fa-icon icon="trash-o"}}
+
+              </button>
+
+        {{/link-to}}
+
+
+       {{#link-to "tasks.statistics" class="tab-dashboard" title="Click to view the recordings of last 7 days"  activeClass="tab-current" tagName="li"}}
+           Dashboard
+        {{/link-to}}
+         
+                                        
+            </ul>
+
+         </nav>
+                                    
+</div>
+
+
+
+
+
+
+
+   <!-- <button id="clear-completed">
+        Clear completed (1)
+    </button>-->
+</footer>  
